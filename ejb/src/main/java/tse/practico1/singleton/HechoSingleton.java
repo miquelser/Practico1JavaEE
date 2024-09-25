@@ -19,12 +19,15 @@ public class HechoSingleton{
     private AtomicInteger nextNumero = new AtomicInteger(1); 
 
     public void agregarHecho(Date fecha, String descripcion, Calificacion calificacion) {
-        int numero = nextNumero.getAndIncrement(); 
-        HechosModel hecho = new HechosModel(numero, fecha, descripcion, calificacion, Estado.NUEVO); 
+        int numero = nextNumero.getAndIncrement();
+        HechosModel hecho = new HechosModel(numero, fecha, descripcion, calificacion, Estado.NUEVO);
         hechosList.add(hecho);
+        System.out.println("Hecho agregado: " + hecho.getDescripcion() + " en la fecha " + hecho.getFecha());
+        System.out.println("Total hechos: " + hechosList.size());
     }
 
     public List<HechosModel> getHechos() {
+        System.out.println("Obteniendo lista de hechos. Total hechos: " + hechosList.size());
         return hechosList;
     }
 

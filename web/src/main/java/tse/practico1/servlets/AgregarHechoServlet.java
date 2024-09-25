@@ -32,49 +32,35 @@ public class AgregarHechoServlet extends HttpServlet {
         Date fecha;
         Calificacion calificacion;
 
+
         try {
-           
+            // Validar fecha
             fecha = formatter.parse(fechaStr);
-            
+
+            // Validar calificación
             calificacion = Calificacion.valueOf(calificacionStr);
-          
+
+            // Agregar hecho a través del servicio
             HechoService.agregarHecho(fecha, descripcion, calificacion);
 
-            response.setContentType("text/html");
-            response.sendRedirect("agregarHecho.jsp");
-            PrintWriter out = response.getWriter();
-            out.println("<html><head><title>Éxito</title></head><body>");
-            out.println("<h1>Hecho agregado con éxito</h1>");
-            out.println("<p>Redirigiendo a la página de agregar en 2 segundos...</p>");
-            out.println("</body></html>");
-            out.close();
-        } catch (IllegalArgumentException e) {            
-            response.setContentType("text/html");
-            response.sendRedirect("agregarHecho.jsp");
-            PrintWriter out = response.getWriter();
-            out.println("<html><head><title>Error</title></head><body>");
-            out.println("<h1>Error: Valor inválido para calificación</h1>");
-            out.println("<p>Redirigiendo a la página de agregar en 2 segundos...</p>");
-            out.println("</body></html>");
-            out.close();
-        } catch (ParseException e) {            
-            response.setContentType("text/html");
-            response.sendRedirect("agregarHecho.jsp");
-            PrintWriter out = response.getWriter();
-            out.println("<html><head><title>Error</title></head><body>");
-            out.println("<h1>Error: Formato de fecha inválido</h1>");
-            out.println("<p>Redirigiendo a la página de agregar en 2 segundos...</p>");
-            out.println("</body></html>");
-            out.close();
-        } catch (Exception e) {            
-            response.setContentType("text/html");
-            response.sendRedirect("agregarHecho.jsp");
-            PrintWriter out = response.getWriter();
-            out.println("<html><head><title>Error</title></head><body>");
-            out.println("<h1>Error al agregar el hecho</h1>");
-            out.println("<p>Redirigiendo a la página de agregar en 2 segundos...</p>");
-            out.println("</body></html>");
-            out.close();
+            // Mensaje de éxito
+            request.setAttribute("mensaje", "Hecho agregado con éxito");
+            request.getRequestDispatcher("agregarHecho.jsp").forward(request, response);
+
+        } catch (IllegalArgumentException e) {
+            // Valor inválido para calificación
+            request.setAttribute("mensajeError", "Error: Valor inválido para calificación");
+            request.getRequestDispatcher("agregarHecho.jsp").forward(request, response);
+
+        } catch (ParseException e) {
+            // Formato de fecha inválido
+            request.setAttribute("mensajeError", "Error: Formato de fecha inválido");
+            request.getRequestDispatcher("agregarHecho.jsp").forward(request, response);
+
+        } catch (Exception e) {
+            // Error general al agregar el hecho
+            request.setAttribute("mensajeError", "Error al agregar el hecho");
+            request.getRequestDispatcher("agregarHecho.jsp").forward(request, response);
             throw new RuntimeException(e);
         }
     }
