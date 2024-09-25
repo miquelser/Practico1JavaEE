@@ -1,7 +1,6 @@
 deploy railway utilizando docker:
 practico1javaee-production.up.railway.app
-
-
+https://practico1javaee-production.up.railway.app/practico1-web/idex-jsp
 
 This project was created from the archetype "wildfly-jakartaee-ear-archetype".
 
