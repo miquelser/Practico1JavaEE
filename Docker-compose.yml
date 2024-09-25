@@ -8,5 +8,5 @@ services:
       - "9990:9990"
     environment:
       - WILDFLY_USERNAME=admin
-      - WILDFLY_PASSWORD=adminpassword123
+      - WILDFLY_PASSWORD=admin1234
     build: .

@@ -1,3 +1,8 @@
+deploy railway utilizando docker:
+practico1javaee-production.up.railway.app
+
+
+
 This project was created from the archetype "wildfly-jakartaee-ear-archetype".
 
 To deploy it:

@@ -1,5 +1,5 @@
 # Usa la imagen base de WildFly de Bitnami
-FROM bitnami/wildfly:33.0.1
+FROM bitnami/wildfly:32.0.1
 
 # Copia el archivo .ear al contenedor en el directorio de despliegue de WildFly
 COPY ear/target/practico1.ear /opt/bitnami/wildfly/standalone/deployments/
