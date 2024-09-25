@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
     <wb-module deploy-name="practico1">
+                
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
+                
         <wb-resource deploy-path="/" source-path="/src/main/application" tag="defaultRootSource"/>
-        <dependent-module archiveName="practico1-ejb.jar" deploy-path="/" handle="module:/resource/practico1-ejb/practico1-ejb">
+        <dependent-module archiveName="practico1-ejb.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/uy/edu/fing/tse/practico1-ejb/0.0.1-SNAPSHOT/practico1-ejb-0.0.1-SNAPSHOT.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="practico1-web.war" deploy-path="/" handle="module:/resource/practico1-web/practico1-web">
+        <dependent-module archiveName="practico1-web.war" deploy-path="/" handle="module:/classpath/var/M2_REPO/uy/edu/fing/tse/practico1-web/0.0.1-SNAPSHOT/practico1-web-0.0.1-SNAPSHOT.war">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+            
     </wb-module>
+    
 </project-modules>

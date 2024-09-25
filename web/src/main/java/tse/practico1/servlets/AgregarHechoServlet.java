@@ -29,7 +29,7 @@ public class AgregarHechoServlet extends HttpServlet {
         String estadoStr = request.getParameter("estado");
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date fecha = null;
+        Date fecha;
         Calificacion calificacion;
 
         try {
@@ -41,7 +41,7 @@ public class AgregarHechoServlet extends HttpServlet {
             HechoService.agregarHecho(fecha, descripcion, calificacion);
 
             response.setContentType("text/html");
-            response.setHeader("Refresh", "2;url=agregar.jsp");
+            response.sendRedirect("agregarHecho.jsp");
             PrintWriter out = response.getWriter();
             out.println("<html><head><title>Éxito</title></head><body>");
             out.println("<h1>Hecho agregado con éxito</h1>");
@@ -50,7 +50,7 @@ public class AgregarHechoServlet extends HttpServlet {
             out.close();
         } catch (IllegalArgumentException e) {            
             response.setContentType("text/html");
-            response.setHeader("Refresh", "2;url=agregar.jsp");
+            response.sendRedirect("agregarHecho.jsp");
             PrintWriter out = response.getWriter();
             out.println("<html><head><title>Error</title></head><body>");
             out.println("<h1>Error: Valor inválido para calificación</h1>");
@@ -59,7 +59,7 @@ public class AgregarHechoServlet extends HttpServlet {
             out.close();
         } catch (ParseException e) {            
             response.setContentType("text/html");
-            response.setHeader("Refresh", "2;url=agregar.jsp");
+            response.sendRedirect("agregarHecho.jsp");
             PrintWriter out = response.getWriter();
             out.println("<html><head><title>Error</title></head><body>");
             out.println("<h1>Error: Formato de fecha inválido</h1>");
@@ -68,7 +68,7 @@ public class AgregarHechoServlet extends HttpServlet {
             out.close();
         } catch (Exception e) {            
             response.setContentType("text/html");
-            response.setHeader("Refresh", "2;url=agregar.jsp");
+            response.sendRedirect("agregarHecho.jsp");
             PrintWriter out = response.getWriter();
             out.println("<html><head><title>Error</title></head><body>");
             out.println("<h1>Error al agregar el hecho</h1>");

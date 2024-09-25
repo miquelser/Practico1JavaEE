@@ -23,6 +23,6 @@ public class ListarHechosServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<HechosModel> hechos = HechoService.getHechos();
         request.setAttribute("hechos", hechos);
-        request.getRequestDispatcher("/listar.jsp").forward(request, response);
+        request.getRequestDispatcher("/listarHechos.jsp").forward(request, response);
     }
 }
