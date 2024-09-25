@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  java_app:
+    image: test:1.0
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+    environment:
+      - WILDFLY_USERNAME=admin
+      - WILDFLY_PASSWORD=adminpassword123
+    build: .
