@@ -1,7 +1,7 @@
 tse\practico1\models\Estado.class
 tse\practico1\service\Interface\IHechosRemote.class
 tse\practico1\singleton\HechoSingleton.class
-tse\practico1\service\Repository\HechoService.class
+tse\practico1\service\Repository\HechosService.class
 tse\practico1\service\Interface\IHechosLocal.class
 tse\practico1\models\Calificacion.class
 tse\practico1\models\HechosModel.class

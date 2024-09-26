@@ -19,7 +19,7 @@ public class AgregarHechoServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @EJB
-    private IHechosLocal HechoService;
+    private IHechosLocal hechosLocal;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -41,7 +41,7 @@ public class AgregarHechoServlet extends HttpServlet {
             calificacion = Calificacion.valueOf(calificacionStr);
 
             // Agregar hecho a través del servicio
-            HechoService.agregarHecho(fecha, descripcion, calificacion);
+            hechosLocal.agregarHecho(fecha, descripcion, calificacion);
 
             // Mensaje de éxito
             request.setAttribute("mensaje", "Hecho agregado con éxito");

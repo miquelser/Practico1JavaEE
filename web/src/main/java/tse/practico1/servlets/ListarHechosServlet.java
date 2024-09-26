@@ -17,11 +17,11 @@ public class ListarHechosServlet extends HttpServlet {
    
 	private static final long serialVersionUID = 1L;
 	@EJB
-	   private IHechosLocal HechoService;
+	   private IHechosLocal hechosLocal;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<HechosModel> hechos = HechoService.getHechos();
+        List<HechosModel> hechos = hechosLocal.getHechos();
         request.setAttribute("hechos", hechos);
         request.getRequestDispatcher("/listarHechos.jsp").forward(request, response);
     }

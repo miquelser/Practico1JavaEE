@@ -19,14 +19,14 @@ public class EliminarHechoServlet extends HttpServlet {
     private static final Logger logger = Logger.getLogger(EliminarHechoServlet.class.getName());
 
     @EJB
-    private IHechosLocal HechoService;
+    private IHechosLocal hechosLocal;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
             String numeroStr = request.getParameter("numero");
             int numero = Integer.parseInt(numeroStr);
-            boolean eliminado = HechoService.eliminarHecho(numero);
+            boolean eliminado = hechosLocal.eliminarHecho(numero);
 
             response.setContentType("text/html");
             PrintWriter out = createResponseWriter(response, eliminado, null);

@@ -17,13 +17,13 @@ public class BuscarHechosServlet extends HttpServlet {
   
 	private static final long serialVersionUID = 1L;
 	@EJB
-    private IHechosLocal HechoService;
+    private IHechosLocal hechosLocal;
 	
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String tipo = request.getParameter("tipo");
         String buscar = request.getParameter("buscar");
-        List<HechosModel> hechos = HechoService.buscarHechos(tipo, buscar);
+        List<HechosModel> hechos = hechosLocal.buscarHechos(tipo, buscar);
         request.setAttribute("hechos", hechos);
         request.setAttribute("resultado", "ok");
 
