@@ -53,7 +53,7 @@ public class HechosBean implements Serializable {
     }
 
     public void buscarHechos() {
-        this.hechosList = HechoService.buscarHechos(tipoBusqueda, valorBusqueda);
+        this.hechosList = HechoService.buscarHechos(valorBusqueda);
     }
 
     public String formatFecha(Date fecha) {

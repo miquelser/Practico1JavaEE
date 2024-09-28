@@ -1,5 +1,11 @@
+<%@ page import="tse.practico1.models.HechosModel" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8"%>
+<% List<HechosModel> hechos = (List<HechosModel>)request.getAttribute("hechos"); %>
+
+
+<%-- --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +13,7 @@
 </head>
 <body>
     <h1>Buscar Hechos</h1>
-    <form action="buscar-hechos" method="post">
-        <label for="tipo">Tipo:</label>
-        <input type="text" id="tipo" name="tipo" />
+    <form action="buscar-hechos" method="get">
         <label for="buscar">Buscar:</label>
         <input type="text" id="buscar" name="buscar" />
         <input type="submit" value="Buscar" />
@@ -28,21 +32,24 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="hecho" items="${hechos}">
-                <tr>
-                    <td>${hecho.numero}</td>
-                    <td>${hecho.descripcion}</td>
-                    <td>${hecho.fecha}</td>
-                    <td>${hecho.calificacion}</td>
-                    <td>${hecho.estado}</td>
-                    <td>
-                        <form action="eliminar-hecho" method="post" style="display:inline;">
-                            <input type="hidden" name="numero" value="${hecho.numero}" />
-                            <input type="submit" value="Eliminar" />
-                        </form>
-                    </td>
-                </tr>
-            </c:forEach>
+        <%for(HechosModel h : hechos){%>
+        <tr>
+            <td><%=h.getNumero() %></td>
+            <td><%=h.getDescripcion() %></td>
+            <td><%=h.getFecha() %></td>
+            <td><%=h.getDescripcion() %></td>
+            <td><%=h.getCalificacion() %></td>
+            <td><%=h.getEstado() %></td>
+
+            <form action="eliminar-hecho" method="post" style="display:inline;">
+                <input type="hidden" name="numero" value="<%= h.getNumero()%>" />
+                <input type="submit" value="Eliminar" />
+            </form>
+        </tr>
+
+        <%} %>
+
+
         </tbody>
     </table>
     <hr/>

@@ -12,6 +12,6 @@ import java.util.List;
 public interface IHechosLocal {
     void agregarHecho(Date fecha, String descripcion, Calificacion calificacion);
     List<HechosModel> getHechos();
-    List<HechosModel> buscarHechos(String tipo, String buscar);
+    List<HechosModel> buscarHechos(String buscar);
     boolean eliminarHecho(int numero);
 }

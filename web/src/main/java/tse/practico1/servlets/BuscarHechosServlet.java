@@ -18,15 +18,26 @@ public class BuscarHechosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB
     private IHechosLocal hechosLocal;
-	
+
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String tipo = request.getParameter("tipo");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String buscar = request.getParameter("buscar");
-        List<HechosModel> hechos = hechosLocal.buscarHechos(tipo, buscar);
+
+        List<HechosModel> hechos;
+
+        // Si no se proporciona "tipo" ni "buscar", se retorna la lista completa
+        if (buscar == null || buscar.isEmpty()) {
+            hechos = hechosLocal.getHechos(); // Método para obtener todos los hechos
+        } else {
+            // Si se proporciona algún valor en "tipo" o "buscar", se hace la búsqueda específica
+            hechos = hechosLocal.buscarHechos(buscar);
+        }
+
+        // Establecer los atributos para enviar a la JSP
         request.setAttribute("hechos", hechos);
         request.setAttribute("resultado", "ok");
 
-        request.getRequestDispatcher("/buscar.jsp").forward(request, response);
+        // Redirigir a la página JSP con los resultados
+        request.getRequestDispatcher("/buscarHecho.jsp").forward(request, response);
     }
 }

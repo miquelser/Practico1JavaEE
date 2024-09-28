@@ -37,24 +37,8 @@ public List<HechosModel> getHechos() {
     return hechosList;
 }
 
-public List<HechosModel> buscarHechos(String tipo, String buscar) {
-    switch (tipo) {
-        case "ID":
-            int numero = Integer.parseInt(buscar);
-            return hechosList.stream().filter(hecho -> hecho.getNumero() == numero).collect(Collectors.toList());
-        case "Descripcion":
-            return hechosList.stream().filter(hecho -> hecho.getDescripcion().equals(buscar)).collect(Collectors.toList());
-        case "Fecha":
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            try {
-                Date fechaBuscada = formatter.parse(buscar);
-                return hechosList.stream().filter(hecho -> hecho.getFecha().equals(fechaBuscada)).collect(Collectors.toList());
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        default:
-            throw new RuntimeException("Tipo de búsqueda no válido.");
-    }
+public List<HechosModel> buscarHechos(String buscar) {
+    return hechosList.stream().filter(hecho -> hecho.getDescripcion().equals(buscar)).collect(Collectors.toList());
 }
 
 public boolean eliminarHecho(int numero) {

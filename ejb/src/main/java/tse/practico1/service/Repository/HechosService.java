@@ -27,8 +27,8 @@ public List<HechosModel> getHechos() {
 }
 
 @Override
-public List<HechosModel> buscarHechos(String tipo, String buscar) {
-   return hechoSingleton.buscarHechos(tipo, buscar);
+public List<HechosModel> buscarHechos(String buscar) {
+   return hechoSingleton.buscarHechos(buscar);
 }
 
 @Override

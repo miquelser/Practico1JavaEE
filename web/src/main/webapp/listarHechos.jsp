@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     
 <%@ page import="java.util.List" %>
-<%@ page import="tse.practico1.models.HechosModel" %>   
+<%@ page import="tse.practico1.models.HechosModel" %>
+<% List<HechosModel> hechos = (List<HechosModel>)request.getAttribute("hechos"); %>
+
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
 
 <!DOCTYPE html>
 <html>
@@ -22,21 +25,23 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="hecho" items="${hechos}">
-                <tr>
-                    <td>${hecho.numero}</td>
-                    <td>${hecho.descripcion}</td>
-                    <td>${hecho.fecha}</td>
-                    <td>${hecho.calificacion}</td>
-                    <td>${hecho.estado}</td>
-                    <td>
-                        <form action="eliminar-hecho" method="post" style="display:inline;">
-                            <input type="hidden" name="numero" value="${hecho.numero}" />
-                            <input type="submit" value="Eliminar" />
-                        </form>
-                    </td>
-                </tr>
-            </c:forEach>
+        <%for(HechosModel h : hechos){%>
+        <tr>
+            <td><%=h.getNumero() %></td>
+            <td><%=h.getDescripcion() %></td>
+            <td><%=h.getFecha() %></td>
+            <td><%=h.getDescripcion() %></td>
+            <td><%=h.getCalificacion() %></td>
+            <td><%=h.getEstado() %></td>
+
+            <form action="eliminar-hecho" method="post" style="display:inline;">
+                <input type="hidden" name="numero" value="<%= h.getNumero()%>" />
+                <input type="submit" value="Eliminar" />
+            </form>
+        </tr>
+
+        <%} %>
+
         </tbody>
     </table>
     <hr/>
