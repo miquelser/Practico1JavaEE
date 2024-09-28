@@ -10,9 +10,9 @@
     <h1>Bienvenido al Gestor de Hechos</h1>
     <ul>
         <li><a href="./listar-hechos">Listar Hechos</a></li>
-        <li><a href=./buscar-hechos">Buscar Hechos</a></li>
-        <li><a href=./agregarHecho.jsp">Agregar Hecho</a></li>
-        <li><a href=./indexjsf.xhtml">Gestion de hechos jsf</a></li>
+        <li><a href="./buscar-hechos">Buscar Hechos</a></li>
+        <li><a href="./agregarHecho.jsp">Agregar Hecho</a></li>
+        <li><a href="./indexjsf.xhtml">Gestion de hechos jsf</a></li>
     </ul>
 </body>
 </html>
