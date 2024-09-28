@@ -37,9 +37,11 @@ public List<HechosModel> getHechos() {
     return hechosList;
 }
 
-public List<HechosModel> buscarHechos(String buscar) {
-    return hechosList.stream().filter(hecho -> hecho.getDescripcion().equals(buscar)).collect(Collectors.toList());
-}
+    public List<HechosModel> buscarHechos(String buscar) {
+        return hechosList.stream()
+                .filter(hecho -> hecho.getDescripcion().toLowerCase().contains(buscar.toLowerCase()))
+                .collect(Collectors.toList());
+    }
 
 public boolean eliminarHecho(int numero) {
     Optional<HechosModel> optionalHecho = hechosList.stream().filter(hecho -> hecho.getNumero() == numero).findFirst();

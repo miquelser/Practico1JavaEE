@@ -4,7 +4,7 @@
 <%@ page import="tse.practico1.models.HechosModel" %>
 <% List<HechosModel> hechos = (List<HechosModel>)request.getAttribute("hechos"); %>
 
-<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
+
 
 <!DOCTYPE html>
 <html>
@@ -25,6 +25,7 @@
             </tr>
         </thead>
         <tbody>
+        <form action="eliminar-hecho" method="post" style="display:inline;">
         <%for(HechosModel h : hechos){%>
         <tr>
             <td><%=h.getNumero() %></td>
@@ -34,14 +35,13 @@
             <td><%=h.getCalificacion() %></td>
             <td><%=h.getEstado() %></td>
 
-            <form action="eliminar-hecho" method="post" style="display:inline;">
                 <input type="hidden" name="numero" value="<%= h.getNumero()%>" />
                 <input type="submit" value="Eliminar" />
-            </form>
+
         </tr>
 
         <%} %>
-
+        </form>
         </tbody>
     </table>
     <hr/>

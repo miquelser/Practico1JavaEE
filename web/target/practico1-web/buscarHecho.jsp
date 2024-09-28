@@ -42,7 +42,7 @@
             <td><%=h.getEstado() %></td>
 
             <form action="eliminar-hecho" method="post" style="display:inline;">
-                <input type="hidden" name="numero" value="${hecho.numero}" />
+                <input type="hidden" name="numero" value="<%= h.getNumero()%>" />
                 <input type="submit" value="Eliminar" />
             </form>
         </tr>

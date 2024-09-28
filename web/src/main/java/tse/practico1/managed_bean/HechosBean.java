@@ -61,7 +61,7 @@ public class HechosBean implements Serializable {
         return formatter.format(fecha);
     }
 
-    // Getters and Setters
+
     public List<HechosModel> getHechosList() {
         return hechosList;
     }
@@ -118,7 +118,7 @@ public class HechosBean implements Serializable {
         this.valorBusqueda = valorBusqueda;
     }
 
-    // hashCode, equals, and toString methods
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
