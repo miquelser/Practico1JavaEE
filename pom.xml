@@ -30,6 +30,7 @@
         <module>ejb</module>
         <module>web</module>
         <module>ear</module>
+        <module>Console</module>
     </modules>
 
     <properties>
@@ -165,6 +166,24 @@
                 <version>${version.junit5}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.wildfly</groupId>
+                <artifactId>wildfly-ejb-client-bom</artifactId>
+                <version>32.0.1.Final</version>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>org.wildfly</groupId>
+                <artifactId>wildfly-naming-client</artifactId>
+                <version>32.0.1.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly</groupId>
+                <artifactId>wildfly-ejb-client</artifactId>
+                <version>32.0.1.Final</version>
             </dependency>
 
             <dependency>

@@ -5,10 +5,9 @@ import jakarta.ejb.LockType;
 import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
 import tse.practico1.models.HechosModel;
-import tse.practico1.models.Calificacion;
+import tse.practico1.models.Clasificacion;
 import tse.practico1.models.Estado;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,9 +23,9 @@ public class HechoSingleton{
     private AtomicInteger nextNumero = new AtomicInteger(1);
 
 @Lock(LockType.WRITE)
-public void agregarHecho(Date fecha, String descripcion, Calificacion calificacion) {
+public void agregarHecho(Date fecha, String descripcion, Clasificacion clasificacion) {
     int numero = nextNumero.getAndIncrement();
-    HechosModel hecho = new HechosModel(numero, fecha, descripcion, calificacion, Estado.NUEVO);
+    HechosModel hecho = new HechosModel(numero, fecha, descripcion, clasificacion, Estado.NUEVO);
     hechosList.add(hecho);
     System.out.println("Hecho agregado: " + hecho.getDescripcion() + " en la fecha " + hecho.getFecha());
     System.out.println("Total hechos: " + hechosList.size());

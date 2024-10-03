@@ -7,9 +7,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import tse.practico1.service.Interface.IHechosLocal;
-import tse.practico1.models.Calificacion;
+import tse.practico1.models.Clasificacion;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,7 +29,7 @@ public class AgregarHechoServlet extends HttpServlet {
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date fecha;
-        Calificacion calificacion;
+        Clasificacion clasificacion;
 
 
         try {
@@ -38,10 +37,10 @@ public class AgregarHechoServlet extends HttpServlet {
             fecha = formatter.parse(fechaStr);
 
             // Validar calificación
-            calificacion = Calificacion.valueOf(calificacionStr);
+            clasificacion = Clasificacion.valueOf(calificacionStr);
 
             // Agregar hecho a través del servicio
-            hechosLocal.agregarHecho(fecha, descripcion, calificacion);
+            hechosLocal.agregarHecho(fecha, descripcion, clasificacion);
 
             // Mensaje de éxito
             request.setAttribute("mensaje", "Hecho agregado con éxito");

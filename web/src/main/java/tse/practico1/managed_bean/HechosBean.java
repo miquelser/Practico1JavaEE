@@ -5,9 +5,9 @@ import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import tse.practico1.models.Clasificacion;
 import tse.practico1.service.Interface.*;
 import tse.practico1.models.HechosModel;
-import tse.practico1.models.Calificacion;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -28,7 +28,7 @@ public class HechosBean implements Serializable {
     private HechosModel selectedHecho;
     private Date fecha;
     private String descripcion;
-    private Calificacion calificacion;
+    private Clasificacion clasificacion;
     private String tipoBusqueda;
     private String valorBusqueda;
 
@@ -39,7 +39,7 @@ public class HechosBean implements Serializable {
 
     public void agregarHecho() {
         try {
-            HechoService.agregarHecho(fecha, descripcion, calificacion);
+            HechoService.agregarHecho(fecha, descripcion, clasificacion);
             this.hechosList = HechoService.getHechos();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
@@ -94,12 +94,12 @@ public class HechosBean implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Calificacion getCalificacion() {
-        return calificacion;
+    public Clasificacion getCalificacion() {
+        return clasificacion;
     }
 
-    public void setCalificacion(Calificacion calificacion) {
-        this.calificacion = calificacion;
+    public void setCalificacion(Clasificacion clasificacion) {
+        this.clasificacion = clasificacion;
     }
 
     public String getTipoBusqueda() {
@@ -126,14 +126,14 @@ public class HechosBean implements Serializable {
         HechosBean that = (HechosBean) o;
         return Objects.equals(fecha, that.fecha) &&
                 Objects.equals(descripcion, that.descripcion) &&
-                Objects.equals(calificacion, that.calificacion) &&
+                Objects.equals(clasificacion, that.clasificacion) &&
                 Objects.equals(tipoBusqueda, that.tipoBusqueda) &&
                 Objects.equals(valorBusqueda, that.valorBusqueda);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fecha, descripcion, calificacion, tipoBusqueda, valorBusqueda);
+        return Objects.hash(fecha, descripcion, clasificacion, tipoBusqueda, valorBusqueda);
     }
 
     @Override
@@ -141,7 +141,7 @@ public class HechosBean implements Serializable {
         return "HechosBean{" +
                 "fecha=" + fecha +
                 ", descripcion='" + descripcion + '\'' +
-                ", calificacion=" + calificacion +
+                ", calificacion=" + clasificacion +
                 ", tipoBusqueda='" + tipoBusqueda + '\'' +
                 ", valorBusqueda='" + valorBusqueda + '\'' +
                 '}';

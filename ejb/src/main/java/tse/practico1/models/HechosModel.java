@@ -9,19 +9,19 @@ public class HechosModel implements Serializable {
 	private int numero;
     private Date fecha;
     private String descripcion;
-    private Calificacion calificacion;
+    private Clasificacion clasificacion;
     private Estado estado;
 
     public HechosModel() {
         super();
     }
 
-    public HechosModel(int numero, Date fecha, String descripcion, Calificacion calificacion, Estado estado) {
+    public HechosModel(int numero, Date fecha, String descripcion, Clasificacion clasificacion, Estado estado) {
         super();
         this.numero = numero;
         this.fecha = fecha;
         this.descripcion = descripcion;
-        this.calificacion = calificacion;
+        this.clasificacion = clasificacion;
         this.estado = estado;
     }
 
@@ -49,12 +49,12 @@ public class HechosModel implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Calificacion getCalificacion() {
-        return calificacion;
+    public Clasificacion getCalificacion() {
+        return clasificacion;
     }
 
-    public void setCalificacion(Calificacion calificacion) {
-        this.calificacion = calificacion;
+    public void setCalificacion(Clasificacion clasificacion) {
+        this.clasificacion = clasificacion;
     }
 
     public Estado getEstado() {

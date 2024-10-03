@@ -27,7 +27,6 @@
     <packaging>ejb</packaging>
     <name>practico1 - ejb</name>
     <description>This is the EJB POM file</description>
-
     <dependencies>
 
         <!-- Import the CDI API, we use provided scope as the API is included in WildFly / JBoss EAP -->
@@ -88,6 +87,21 @@
             <artifactId>jakarta.annotation-api</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-naming-client-jakarta</artifactId>
+            <version>1.0.16.Final</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.jboss.remoting</groupId>
+            <artifactId>jboss-remoting</artifactId>
+            <version>5.0.0.Final</version>
+        </dependency>
+
+        
     </dependencies>
 
     <build>

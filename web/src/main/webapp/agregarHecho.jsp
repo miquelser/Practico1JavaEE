@@ -15,8 +15,8 @@
         <label for="fecha">Fecha (yyyy-MM-dd):</label>
         <input type="text" id="fecha" name="fecha" required />
         <br/>
-        <label for="calificacion">Calificación:</label>
-        <select id="calificacion" name="calificacion" required>
+        <label for="clasificacion">Calificación:</label>
+        <select id="clasificacion" name="clasificacion" required>
             <option value="Politica">Política</option>
             <option value="Economía">Economía</option>
             <option value="Tecnología">Tecnología</option>
@@ -25,6 +25,7 @@
         </select>
         <br/>      
         <input type="submit" value="Agregar Hecho" />
+
     </form>
     <hr/>
     <a href="index.jsp">Volver al índice</a>

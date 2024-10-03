@@ -17,8 +17,8 @@
                 <p:outputLabel for="descripcion" value="Descripción:" />
                 <p:inputText id="descripcion" value="#{hechosBean.descripcion}" />
 
-                <p:outputLabel for="calificacion" value="Calificación:" />
-                <p:selectOneMenu id="calificacion" value="#{hechosBean.calificacion}">
+                <p:outputLabel for="clasificacion" value="Calificación:" />
+                <p:selectOneMenu id="clasificacion" value="#{hechosBean.clasificacion}">
                     <f:selectItem itemValue="Politica" itemLabel="Política" />
                     <f:selectItem itemValue="Economía" itemLabel="Economía" />
                     <f:selectItem itemValue="Tecnología" itemLabel="Tecnología" />
@@ -57,7 +57,7 @@
                 <h:outputText value="#{hecho.descripcion}" />
             </p:column>
             <p:column headerText="Calificación">
-                <h:outputText value="#{hecho.calificacion}" />
+                <h:outputText value="#{hecho.clasificacion}" />
             </p:column>
             <p:column headerText="Estado">
                 <h:outputText value="#{hecho.estado}" />

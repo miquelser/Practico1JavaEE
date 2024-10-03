@@ -4,7 +4,7 @@ import jakarta.inject.Inject;
 import tse.practico1.models.HechosModel;
 import tse.practico1.service.Interface.IHechosLocal;
 import tse.practico1.service.Interface.IHechosRemote;
-import tse.practico1.models.Calificacion;
+import tse.practico1.models.Clasificacion;
 import tse.practico1.singleton.HechoSingleton;
 import java.util.Date;
 import java.util.List;
@@ -17,8 +17,8 @@ public class HechosService implements IHechosLocal, IHechosRemote {
 private HechoSingleton hechoSingleton;
 
 @Override
-public void agregarHecho(Date fecha, String descripcion, Calificacion calificacion) {
-    hechoSingleton.agregarHecho(fecha,descripcion, calificacion);
+public void agregarHecho(Date fecha, String descripcion, Clasificacion clasificacion) {
+    hechoSingleton.agregarHecho(fecha,descripcion, clasificacion);
 }
 
 @Override
