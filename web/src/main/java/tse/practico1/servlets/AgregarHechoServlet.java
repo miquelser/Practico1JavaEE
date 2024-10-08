@@ -24,20 +24,18 @@ public class AgregarHechoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String descripcion = request.getParameter("descripcion");
         String fechaStr = request.getParameter("fecha");
-        String calificacionStr = request.getParameter("calificacion");
-        String estadoStr = request.getParameter("estado");
+        String clasificacionStr = request.getParameter("clasificacion");
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date fecha;
         Clasificacion clasificacion;
 
-
         try {
             // Validar fecha
             fecha = formatter.parse(fechaStr);
 
-            // Validar calificación
-            clasificacion = Clasificacion.valueOf(calificacionStr);
+            // Validar clasificación
+            clasificacion = Clasificacion.valueOf(clasificacionStr);
 
             // Agregar hecho a través del servicio
             hechosLocal.agregarHecho(fecha, descripcion, clasificacion);
@@ -47,8 +45,8 @@ public class AgregarHechoServlet extends HttpServlet {
             request.getRequestDispatcher("agregarHecho.jsp").forward(request, response);
 
         } catch (IllegalArgumentException e) {
-            // Valor inválido para calificación
-            request.setAttribute("mensajeError", "Error: Valor inválido para calificación");
+            // Valor inválido para clasificación
+            request.setAttribute("mensajeError", "Error: Valor inválido para clasificación");
             request.getRequestDispatcher("agregarHecho.jsp").forward(request, response);
 
         } catch (ParseException e) {
@@ -60,7 +58,6 @@ public class AgregarHechoServlet extends HttpServlet {
             // Error general al agregar el hecho
             request.setAttribute("mensajeError", "Error al agregar el hecho");
             request.getRequestDispatcher("agregarHecho.jsp").forward(request, response);
-            throw new RuntimeException(e);
         }
     }
 }

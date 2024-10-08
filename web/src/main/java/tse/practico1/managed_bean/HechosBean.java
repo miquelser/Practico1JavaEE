@@ -1,12 +1,11 @@
 package tse.practico1.managed_bean;
 
-
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import tse.practico1.models.Clasificacion;
-import tse.practico1.service.Interface.*;
+import tse.practico1.service.Interface.IHechosLocal;
 import tse.practico1.models.HechosModel;
 
 import java.io.Serializable;
@@ -61,7 +60,6 @@ public class HechosBean implements Serializable {
         return formatter.format(fecha);
     }
 
-
     public List<HechosModel> getHechosList() {
         return hechosList;
     }
@@ -94,11 +92,12 @@ public class HechosBean implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Clasificacion getCalificacion() {
+    // Cambiar el nombre de los métodos aquí
+    public Clasificacion getClasificacion() {
         return clasificacion;
     }
 
-    public void setCalificacion(Clasificacion clasificacion) {
+    public void setClasificacion(Clasificacion clasificacion) {
         this.clasificacion = clasificacion;
     }
 
@@ -117,7 +116,6 @@ public class HechosBean implements Serializable {
     public void setValorBusqueda(String valorBusqueda) {
         this.valorBusqueda = valorBusqueda;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -141,7 +139,7 @@ public class HechosBean implements Serializable {
         return "HechosBean{" +
                 "fecha=" + fecha +
                 ", descripcion='" + descripcion + '\'' +
-                ", calificacion=" + clasificacion +
+                ", clasificacion=" + clasificacion +
                 ", tipoBusqueda='" + tipoBusqueda + '\'' +
                 ", valorBusqueda='" + valorBusqueda + '\'' +
                 '}';

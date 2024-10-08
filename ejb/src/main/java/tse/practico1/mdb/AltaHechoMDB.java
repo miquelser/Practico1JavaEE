@@ -1,5 +1,6 @@
 package tse.practico1.mdb;
 import jakarta.ejb.ActivationConfigProperty;
+import jakarta.ejb.EJB;
 import jakarta.ejb.MessageDriven;
 import jakarta.jms.Message;
 import jakarta.jms.MessageListener;
@@ -7,18 +8,20 @@ import jakarta.jms.TextMessage;
 import jakarta.inject.Inject;
 import tse.practico1.models.Clasificacion;
 import tse.practico1.service.Interface.IHechosRemote;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @MessageDriven(
         activationConfig = {
                 @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "jakarta.jms.Queue"),
-                @ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/jms/queue/queue_alta_hechos"), // Cambiado al nuevo nombre de la cola
+                @ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/jms/queue/queue_alta_hechos"),
                 @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge")
         }
 )
 public class AltaHechoMDB implements MessageListener { // using ActiveMQ Artemis
 
-    @Inject
+    @EJB
     private IHechosRemote hechosBean;
 
     @Override
@@ -28,9 +31,13 @@ public class AltaHechoMDB implements MessageListener { // using ActiveMQ Artemis
                 String texto = ((TextMessage) message).getText();
                 String[] atributos = texto.split("\\|");
 
-                Date fecha = new Date();
                 String descripcion = atributos[0];
-                Clasificacion clasificacion = Clasificacion.valueOf(atributos[1]);
+
+
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                Date fecha = formatter.parse(atributos[1]);
+
+                Clasificacion clasificacion = Clasificacion.valueOf(atributos[2]);
 
                 hechosBean.agregarHecho(fecha, descripcion, clasificacion);
 
