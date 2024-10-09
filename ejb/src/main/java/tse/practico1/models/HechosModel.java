@@ -49,11 +49,11 @@ public class HechosModel implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Clasificacion getCalificacion() {
+    public Clasificacion getClasificacion() {
         return clasificacion;
     }
 
-    public void setCalificacion(Clasificacion clasificacion) {
+    public void setClasificacion(Clasificacion clasificacion) {
         this.clasificacion = clasificacion;
     }
 

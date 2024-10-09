@@ -38,7 +38,7 @@
             <td><%=h.getDescripcion() %></td>
             <td><%=h.getFecha() %></td>
             <td><%=h.getDescripcion() %></td>
-            <td><%=h.getCalificacion() %></td>
+            <td><%=h.getClasificacion() %></td>
             <td><%=h.getEstado() %></td>
 
             <form action="eliminar-hecho" method="post" style="display:inline;">

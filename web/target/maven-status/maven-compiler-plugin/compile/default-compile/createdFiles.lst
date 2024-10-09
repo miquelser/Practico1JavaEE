@@ -1,6 +1,8 @@
 tse\practico1\servlets\AgregarHechoServlet.class
+tse\practico1\rest\HechosController.class
 tse\practico1\servlets\EliminarHechoServlet.class
 tse\practico1\managed_bean\HechosBean.class
 tse\practico1\servlets\ListarHechosServlet.class
 tse\practico1\servlets\BuscarHechosServlet.class
 tse\practico1\servlets\EnviarMensajeServlet.class
+tse\practico1\rest\RestApplication.class
