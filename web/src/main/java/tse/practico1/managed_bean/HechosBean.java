@@ -10,6 +10,8 @@ import tse.practico1.models.HechosModel;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -38,7 +40,8 @@ public class HechosBean implements Serializable {
 
     public void agregarHecho() {
         try {
-            HechoService.agregarHecho(fecha, descripcion, clasificacion);
+            LocalDate fechaLocal = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            HechoService.agregarHecho(fechaLocal, descripcion, clasificacion);
             this.hechosList = HechoService.getHechos();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();

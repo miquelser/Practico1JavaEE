@@ -1,13 +1,23 @@
 package tse.practico1.models;
-
+import jakarta.json.bind.annotation.JsonbDateFormat;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import java.io.Serializable;
-import java.util.Date;
 
+import java.time.LocalDate;
+
+
+@Entity
 public class HechosModel implements Serializable {
    
 	private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int numero;
-    private Date fecha;
+    @JsonbDateFormat("yyyy-MM-dd")
+    private LocalDate fecha;
     private String descripcion;
     private Clasificacion clasificacion;
     private Estado estado;
@@ -16,7 +26,7 @@ public class HechosModel implements Serializable {
         super();
     }
 
-    public HechosModel(int numero, Date fecha, String descripcion, Clasificacion clasificacion, Estado estado) {
+    public HechosModel(int numero, LocalDate fecha, String descripcion, Clasificacion clasificacion, Estado estado) {
         super();
         this.numero = numero;
         this.fecha = fecha;
@@ -33,11 +43,11 @@ public class HechosModel implements Serializable {
         this.numero = numero;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

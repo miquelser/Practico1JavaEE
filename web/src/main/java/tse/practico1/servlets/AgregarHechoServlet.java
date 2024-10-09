@@ -11,6 +11,8 @@ import tse.practico1.models.Clasificacion;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 @WebServlet(name = "AgregarHecho", value = "/agregar-hecho")
@@ -28,17 +30,20 @@ public class AgregarHechoServlet extends HttpServlet {
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date fecha;
+
+
+
         Clasificacion clasificacion;
 
         try {
             // Validar fecha
             fecha = formatter.parse(fechaStr);
-
+            LocalDate fechaLocal = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             // Validar clasificación
             clasificacion = Clasificacion.valueOf(clasificacionStr);
 
             // Agregar hecho a través del servicio
-            hechosLocal.agregarHecho(fecha, descripcion, clasificacion);
+            hechosLocal.agregarHecho(fechaLocal, descripcion, clasificacion);
 
             // Mensaje de éxito
             request.setAttribute("mensaje", "Hecho agregado con éxito");

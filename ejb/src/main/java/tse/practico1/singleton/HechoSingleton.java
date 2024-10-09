@@ -8,8 +8,8 @@ import tse.practico1.models.HechosModel;
 import tse.practico1.models.Clasificacion;
 import tse.practico1.models.Estado;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -23,7 +23,7 @@ public class HechoSingleton{
     private AtomicInteger nextNumero = new AtomicInteger(1);
 
 @Lock(LockType.WRITE)
-public void agregarHecho(Date fecha, String descripcion, Clasificacion clasificacion) {
+public void agregarHecho(LocalDate fecha, String descripcion, Clasificacion clasificacion) {
     int numero = nextNumero.getAndIncrement();
     HechosModel hecho = new HechosModel(numero, fecha, descripcion, clasificacion, Estado.NUEVO);
     hechosList.add(hecho);

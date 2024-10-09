@@ -10,6 +10,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
@@ -106,8 +108,8 @@ public class ConsoleApp {
         }
 
         Clasificacion clasificacion = clasifiaciones[seleccion - 1];
-
-        hechosService.agregarHecho(fecha, descripcion, clasificacion);
+        LocalDate fechaLocal = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        hechosService.agregarHecho(fechaLocal, descripcion, clasificacion);
         System.out.println("Hecho agregado.");
     }
 

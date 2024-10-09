@@ -1,11 +1,14 @@
 package tse.practico1.service.Repository;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Stateless;
-import jakarta.inject.Inject;
+
 import tse.practico1.models.HechosModel;
 import tse.practico1.service.Interface.IHechosLocal;
 import tse.practico1.service.Interface.IHechosRemote;
 import tse.practico1.models.Clasificacion;
 import tse.practico1.singleton.HechoSingleton;
+
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -13,11 +16,11 @@ import java.util.List;
 @Stateless
 public class HechosService implements IHechosLocal, IHechosRemote {
 
-@Inject
+@EJB
 private HechoSingleton hechoSingleton;
 
 @Override
-public void agregarHecho(Date fecha, String descripcion, Clasificacion clasificacion) {
+public void agregarHecho(LocalDate fecha, String descripcion, Clasificacion clasificacion) {
     hechoSingleton.agregarHecho(fecha,descripcion, clasificacion);
 }
 

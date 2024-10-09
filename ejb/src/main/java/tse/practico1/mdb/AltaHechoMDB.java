@@ -5,11 +5,12 @@ import jakarta.ejb.MessageDriven;
 import jakarta.jms.Message;
 import jakarta.jms.MessageListener;
 import jakarta.jms.TextMessage;
-import jakarta.inject.Inject;
 import tse.practico1.models.Clasificacion;
 import tse.practico1.service.Interface.IHechosRemote;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 @MessageDriven(
@@ -36,10 +37,10 @@ public class AltaHechoMDB implements MessageListener { // using ActiveMQ Artemis
 
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
                 Date fecha = formatter.parse(atributos[1]);
-
+                LocalDate fechaLocal = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 Clasificacion clasificacion = Clasificacion.valueOf(atributos[2]);
 
-                hechosBean.agregarHecho(fecha, descripcion, clasificacion);
+                hechosBean.agregarHecho(fechaLocal, descripcion, clasificacion);
 
             } catch (Exception e) {
                 e.printStackTrace();
