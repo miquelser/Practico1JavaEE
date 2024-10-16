@@ -1,9 +1,7 @@
 package tse.practico1.models;
 import jakarta.json.bind.annotation.JsonbDateFormat;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 
 import java.time.LocalDate;
@@ -19,7 +17,9 @@ public class HechosModel implements Serializable {
     @JsonbDateFormat("yyyy-MM-dd")
     private LocalDate fecha;
     private String descripcion;
+    @Column(nullable = false)
     private Clasificacion clasificacion;
+    @Column(nullable = false)
     private Estado estado;
 
     public HechosModel() {
